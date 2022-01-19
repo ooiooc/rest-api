@@ -24,10 +24,15 @@ public class Book {
     @Column(length = 500, nullable = false)
     private String isbn;
 
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    private Author author;
+
     @Builder
-    public Book(String name, String isbn) {
+    public Book(String name, String isbn, Author author) {
         this.name = name;
         this.isbn = isbn;
+        this.author = author;
     }
 
 }
